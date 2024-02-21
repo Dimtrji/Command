@@ -1,0 +1,9 @@
+D:\Users\metru\Source\Repos\Command\Command\obj\Debug\Command.csproj.AssemblyReference.cache
+D:\Users\metru\Source\Repos\Command\Command\obj\Debug\Command.csproj.CoreCompileInputs.cache
+D:\Users\metru\Source\Repos\Command\Command\bin\Debug\Command.dll.config
+D:\Users\metru\Source\Repos\Command\Command\bin\Debug\Command.dll
+D:\Users\metru\Source\Repos\Command\Command\bin\Debug\Command.pdb
+D:\Users\metru\Source\Repos\Command\Command\obj\Debug\Command.dll
+D:\Users\metru\Source\Repos\Command\Command\obj\Debug\Command.pdb
+D:\Users\metru\Source\Repos\Command\Command\bin\Debug\System.Data.SQLite.dll
+D:\Users\metru\Source\Repos\Command\Command\obj\Debug\Command.csproj.CopyComplete

@@ -1,0 +1,11 @@
+D:\Users\metru\Source\Repos\Command\Client\bin\Debug\Client.exe.config
+D:\Users\metru\Source\Repos\Command\Client\bin\Debug\Client.exe
+D:\Users\metru\Source\Repos\Command\Client\bin\Debug\Client.pdb
+D:\Users\metru\Source\Repos\Command\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+D:\Users\metru\Source\Repos\Command\Client\obj\Debug\Client.csproj.SuggestedBindingRedirects.cache
+D:\Users\metru\Source\Repos\Command\Client\obj\Debug\Client.Properties.Resources.resources
+D:\Users\metru\Source\Repos\Command\Client\obj\Debug\Client.csproj.GenerateResource.cache
+D:\Users\metru\Source\Repos\Command\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+D:\Users\metru\Source\Repos\Command\Client\obj\Debug\Client.exe
+D:\Users\metru\Source\Repos\Command\Client\obj\Debug\Client.pdb
+D:\Users\metru\Source\Repos\Command\Client\obj\Debug\Client.Form1.resources

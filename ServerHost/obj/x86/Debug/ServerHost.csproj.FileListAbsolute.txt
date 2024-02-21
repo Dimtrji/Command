@@ -1,0 +1,13 @@
+D:\Users\metru\Source\Repos\Command\ServerHost\bin\x86\Debug\ServerHost.exe.config
+D:\Users\metru\Source\Repos\Command\ServerHost\bin\x86\Debug\ServerHost.exe
+D:\Users\metru\Source\Repos\Command\ServerHost\bin\x86\Debug\ServerHost.pdb
+D:\Users\metru\Source\Repos\Command\ServerHost\bin\x86\Debug\Command.dll
+D:\Users\metru\Source\Repos\Command\ServerHost\bin\x86\Debug\System.Data.SQLite.dll
+D:\Users\metru\Source\Repos\Command\ServerHost\bin\x86\Debug\Command.pdb
+D:\Users\metru\Source\Repos\Command\ServerHost\bin\x86\Debug\Command.dll.config
+D:\Users\metru\Source\Repos\Command\ServerHost\obj\x86\Debug\ServerHost.csproj.AssemblyReference.cache
+D:\Users\metru\Source\Repos\Command\ServerHost\obj\x86\Debug\ServerHost.csproj.SuggestedBindingRedirects.cache
+D:\Users\metru\Source\Repos\Command\ServerHost\obj\x86\Debug\ServerHost.csproj.CoreCompileInputs.cache
+D:\Users\metru\Source\Repos\Command\ServerHost\obj\x86\Debug\ServerHost.csproj.CopyComplete
+D:\Users\metru\Source\Repos\Command\ServerHost\obj\x86\Debug\ServerHost.exe
+D:\Users\metru\Source\Repos\Command\ServerHost\obj\x86\Debug\ServerHost.pdb
