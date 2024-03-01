@@ -13,69 +13,81 @@ namespace Command
     // ПРИМЕЧАНИЕ. Команду "Переименовать" в меню "Рефакторинг" можно использовать для одновременного изменения имени класса "Service1" в коде и файле конфигурации.
     public class Commands : ICommands
     {
-        public TablePerson GetTablePerson(int id)
+        public DataTable GetTable(out string message)
         {
-            throw new NotImplementedException();
-        }
-
-        public void SetTablePerson(TablePerson t)
-        {
-            throw new NotImplementedException();
-        }
-
-        DataTable ICommands.SendRequest(string queryString, out string message)
-        {
-            const string localPath = "db/testDB.dat";
+            // Запросить таблицу
             message = "";
-            int requestInfo = 0;
-            DataTable dataTable = null;
-            try
-            {
-                SQLiteConnection connection = new SQLiteConnection(@"Data Source=" + localPath + ";Version=3"); //@"Data Source=C:\\ProgramData\\MDO\\ParsecNET 3\\parsec3.events.dat;Version=3;");
-                connection.Open();
-                
-                var ds = new DataSet();
-                using (SQLiteCommand c = new SQLiteCommand(queryString, connection))
-                {
-                    requestInfo = c.ExecuteNonQuery();
-                    if (requestInfo <= 0)
-                    {
-                        using (var a = new SQLiteDataAdapter(c))
-                            a.Fill(ds);
+            SqliteWork selectSql = new SqliteWork();
+            DataTable dt = selectSql.SendRequest("select * from person", out message);
+            //DataTablePersonRow[] dtT = new DataTablePersonRow[dt.Rows.Count];
+            return dt;
+        }
 
-                        if (ds.Tables.Count > 0)
-                        {
-                            message += "Record: " + ds.Tables[0].Rows.Count + Environment.NewLine;
-                            dataTable = ds.Tables[0];
-                            
-                        }
-                        else
-                        {
-                            message = "Complete";
-                        }
-                    }
-                    else
-                    {
-                        message += "Records: " + requestInfo + Environment.NewLine;                    
-                    }
+        public string SetTable(DataTablePersonRow tableTransfer, out string message)
+        {
+            //upsert update and insert sqlite
+            SqliteWork selectSql = new SqliteWork();
+            /*string query = "INSERT INTO person (id, name, id_card) VALUES(" + tableTransfer.Id + ", '" + tableTransfer.Name + "', " + tableTransfer.Id_card
+                + " ) ON CONFLICT (id) DO UPDATE SET name = '" +
+                tableTransfer.Name + "', id_card=" + tableTransfer.Id_card + " WHERE id=" + tableTransfer.Id;  */
+            string query = "insert into person (id, name, id_card) VALUES(" + tableTransfer.Id + ", '" + tableTransfer.Name + "', " + tableTransfer.Id_card + " )";
+            message = "";
+
+
+            selectSql.SendRequest(message, out message);
+            message += query;
+            return message;
+        }
+        
+        // Случайная строка....
+        public DataTable GetRandomRow()
+        {
+            SqliteWork selectSql = new SqliteWork();
+
+            DataTable dt = selectSql.SendRequest("SELECT * FROM person ORDER BY RANDOM() LIMIT 1", out string message); 
+            //DataTablePersonRow dataTablePersonRow = DataTableToPersonTable(dt, 0);
+
+            return dt;
+        }
+
+        public void Delete(string dataSet)
+        {
+            //SqliteWork selectSql = new SqliteWork();
+        }
+
+        private DataTablePersonRow DataTableToPersonTable(DataTable dt, int rowN)
+        {
+            DataTablePersonRow dataTablePerson = new DataTablePersonRow();
+
+            for (int j = 0; j < dt.Columns.Count; j++)
+            {
+                if (dt.Rows[rowN][j] is string)
+                {                }
+                else rowN++;
+
+                if (dt.Columns[j].ColumnName == "id")
+                {
+                    dataTablePerson.Id = (int)dt.Rows[rowN][j];
+                }
+                if (dt.Columns[j].ColumnName == "name")
+                {
+                    dataTablePerson.Name = dt.Rows[rowN][j].ToString();
+                }
+                if (dt.Columns[j].ColumnName == "id_card")
+                {
+                    dataTablePerson.Id_card = (int)dt.Rows[rowN][j];
                 }
 
-                connection.Close();
             }
-            catch (FaultException fe) 
-            {
-                message += "FaultException:" + fe.Message.ToString() + Environment.NewLine;               
-            }
-            catch (SQLiteException se)
-            {
-                message += "Sqlite Error:" + se.Message.ToString() + Environment.NewLine;
-            }
-            catch (Exception ex)
-            {
-                message += "Error:" + ex.Message.ToString() + Environment.NewLine;
-            }
-            return dataTable;
-
+            return dataTablePerson;
         }
+
+
+
+
+
+
+
+
     }
 }

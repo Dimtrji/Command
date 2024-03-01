@@ -13,12 +13,15 @@ namespace Command
     public interface ICommands
     {
         [OperationContract]
-        DataTable SendRequest(string queryString, out string message);
+        DataTable GetTable(out string message);
 
         [OperationContract]
-        void SetTablePerson(TablePerson t);
+        string SetTable(DataTablePersonRow tablePerson, out string message);
 
         [OperationContract]
-        TablePerson GetTablePerson(int id);
+        DataTable GetRandomRow();
+
+        [OperationContract]
+        void Delete(string dataSet);
     }
 }

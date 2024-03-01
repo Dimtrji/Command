@@ -76,10 +76,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Connected Services\ServiceReference1\Client.ServiceReference1.SendRequestResponse.datasource">
+    <None Include="Connected Services\ServiceReference1\Client.ServiceReference1.GetTableResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceReference1\Client.ServiceReference1.TablePerson.datasource">
+    <None Include="Connected Services\ServiceReference1\Client.ServiceReference1.SetTableResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference1\Commands.wsdl" />

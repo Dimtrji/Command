@@ -37,43 +37,53 @@
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Command" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="ICommands_SendRequest_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendRequest" />
+  <wsdl:message name="ICommands_GetTable_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTable" />
   </wsdl:message>
-  <wsdl:message name="ICommands_SendRequest_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SendRequestResponse" />
+  <wsdl:message name="ICommands_GetTable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTableResponse" />
   </wsdl:message>
-  <wsdl:message name="ICommands_SetTablePerson_InputMessage">
-    <wsdl:part name="parameters" element="tns:SetTablePerson" />
+  <wsdl:message name="ICommands_SetTable_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetTable" />
   </wsdl:message>
-  <wsdl:message name="ICommands_SetTablePerson_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SetTablePersonResponse" />
+  <wsdl:message name="ICommands_SetTable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetTableResponse" />
   </wsdl:message>
-  <wsdl:message name="ICommands_GetTablePerson_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetTablePerson" />
+  <wsdl:message name="ICommands_GetRandomRow_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRandomRow" />
   </wsdl:message>
-  <wsdl:message name="ICommands_GetTablePerson_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetTablePersonResponse" />
+  <wsdl:message name="ICommands_GetRandomRow_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRandomRowResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICommands_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="ICommands_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
   </wsdl:message>
   <wsdl:portType name="ICommands">
-    <wsdl:operation name="SendRequest">
-      <wsdl:input wsaw:Action="http://tempuri.org/ICommands/SendRequest" message="tns:ICommands_SendRequest_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ICommands/SendRequestResponse" message="tns:ICommands_SendRequest_OutputMessage" />
+    <wsdl:operation name="GetTable">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommands/GetTable" message="tns:ICommands_GetTable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommands/GetTableResponse" message="tns:ICommands_GetTable_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SetTablePerson">
-      <wsdl:input wsaw:Action="http://tempuri.org/ICommands/SetTablePerson" message="tns:ICommands_SetTablePerson_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ICommands/SetTablePersonResponse" message="tns:ICommands_SetTablePerson_OutputMessage" />
+    <wsdl:operation name="SetTable">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommands/SetTable" message="tns:ICommands_SetTable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommands/SetTableResponse" message="tns:ICommands_SetTable_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetTablePerson">
-      <wsdl:input wsaw:Action="http://tempuri.org/ICommands/GetTablePerson" message="tns:ICommands_GetTablePerson_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ICommands/GetTablePersonResponse" message="tns:ICommands_GetTablePerson_OutputMessage" />
+    <wsdl:operation name="GetRandomRow">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommands/GetRandomRow" message="tns:ICommands_GetRandomRow_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommands/GetRandomRowResponse" message="tns:ICommands_GetRandomRow_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommands/Delete" message="tns:ICommands_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommands/DeleteResponse" message="tns:ICommands_Delete_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_ICommands" type="tns:ICommands">
     <wsp:PolicyReference URI="#NetTcpBinding_ICommands_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="SendRequest">
-      <soap12:operation soapAction="http://tempuri.org/ICommands/SendRequest" style="document" />
+    <wsdl:operation name="GetTable">
+      <soap12:operation soapAction="http://tempuri.org/ICommands/GetTable" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -81,8 +91,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetTablePerson">
-      <soap12:operation soapAction="http://tempuri.org/ICommands/SetTablePerson" style="document" />
+    <wsdl:operation name="SetTable">
+      <soap12:operation soapAction="http://tempuri.org/ICommands/SetTable" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -90,8 +100,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetTablePerson">
-      <soap12:operation soapAction="http://tempuri.org/ICommands/GetTablePerson" style="document" />
+    <wsdl:operation name="GetRandomRow">
+      <soap12:operation soapAction="http://tempuri.org/ICommands/GetRandomRow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap12:operation soapAction="http://tempuri.org/ICommands/Delete" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

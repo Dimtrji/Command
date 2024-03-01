@@ -19,73 +19,110 @@ namespace Client
 
         private void buttonSelectAll_Click(object sender, EventArgs e)
         {
-            Random r = new Random(); 
             dataGridViewTable.Columns.Clear();
             var client = new ServiceReference1.CommandsClient("NetTcpBinding_ICommands");
-            DataTable dT = null;
+
             try
             {
-                dT = client.SendRequest("select * from person", out message);
-                dataGridViewTable.DataSource = client.SendRequest("select * from person where id=" + r.Next(1, dT.Rows.Count), out message); 
+                var personRow = client.GetRandomRow();
+                dataGridViewTable.DataSource = personRow;
+                // dataRowInGridView(personRow);                          
             }
             catch (Exception ex)
             {
                 message += ex.Message;
-            }            
-            textBox1.Text = message;
+            }
             client.Close();
         }
 
         private void buttonInsert_Click(object sender, EventArgs e)
         {
-            string[] s = new string[dataGridViewTable.Rows.Count-1];
-            for (int i = 0; i < dataGridViewTable.Rows.Count-1; i++)
-            {
-                for (int j = 0; j < dataGridViewTable.Columns.Count; j++)
-                {
-                    if (dataGridViewTable[j, i].Value is string)
-                    {
-                        s[i] += "\"" + dataGridViewTable[j, i].Value.ToString() + "\"";
-                    }
-                    else 
-                        s[i] +=  dataGridViewTable[j,i].Value.ToString();
-                    if (j+1!= dataGridViewTable.Columns.Count)
-                    {
-                        s[i] += ", ";
-                    }
-                }
-                textBox1.Text+= s[i];
-            }
+            textBox1.Clear();
+            //DataTable dt = ToDataTable(dataGridViewTable, "person");
             try
-            {              
-                for (int i = 0; i < s.Length; i++)
-                {
-                    var client = new ServiceReference1.CommandsClient("NetTcpBinding_ICommands");
-                    client.SendRequest("insert into person values (" + s[i] +")", out message);
-                    client.Close();
-                    textBox1.Text += message + Environment.NewLine;    
-                }             
+            {
+                var client = new ServiceReference1.CommandsClient("NetTcpBinding_ICommands");
+                ServiceReference1.DataTablePersonRow dtT = new ServiceReference1.DataTablePersonRow();
+                dtT.Id = System.Convert.ToInt32(dataGridViewTable.Rows[0].Cells[0].Value.ToString());
+                dtT.Name = dataGridViewTable.Rows[0].Cells[1].Value.ToString();
+                dtT.Id_card = System.Convert.ToInt32(dataGridViewTable.Rows[0].Cells[2].Value.ToString());
+                //textBox1.Text += dtT.Id;
+                client.SetTable(dtT, out message);
+                client.Close();
             }
             catch (Exception ex)
             {
                 message += ex.Message;
             }
+            textBox1.Text += message;
         }
 
         private void buttonSelect_Click(object sender, EventArgs e)
-        {         
+        {
             dataGridViewTable.Columns.Clear();
+
+            DataTable dt = new DataTable();
             var client = new ServiceReference1.CommandsClient("NetTcpBinding_ICommands");
             try
             {
-                dataGridViewTable.DataSource = client.SendRequest("select * from person", out message); //
+                dt = client.GetTable(out message); 
+                dataGridViewTable.DataSource = dt;
             }
             catch (Exception ex)
             {
                 message += ex.Message;
             }
-            textBox1.Text = message;
+            textBox1.Text += message;
             client.Close();
         }
+
+        public static DataTable ToDataTable(DataGridView dataGridView, string tableName)
+        {
+
+            DataGridView dgv = dataGridView;
+            DataTable table = new DataTable(tableName);
+
+            for (int iCol = 0; iCol < dgv.Columns.Count; iCol++)
+            {
+                table.Columns.Add(dgv.Columns[iCol].Name);
+            }
+
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+
+                DataRow datarw = table.NewRow();
+
+                for (int iCol = 0; iCol < dgv.Columns.Count; iCol++)
+                {
+                    datarw[iCol] = row.Cells[iCol].Value;
+                }
+
+                table.Rows.Add(datarw);
+            }
+
+            return table;
+        }
+        
+        /*
+        void DataRowInGridView(string personRow) 
+        {
+            for (int i = 0; i < dataGridViewTable.Columns.Count; i++)
+            {
+                if (dataGridViewTable.Columns[i].Name == "id")
+                {
+                    dataGridViewTable.Rows[1].Cells[i].Value = personRow.Id;
+                    textBox1.Text = personRow.Name.ToString();
+                }
+                if (dataGridViewTable.Columns[i].Name == "name")
+                {
+                    dataGridViewTable.Rows[1].Cells[i].Value = personRow.Name;
+                }
+                if (dataGridViewTable.Columns[i].Name == "id_card")
+                {
+                    dataGridViewTable.Rows[1].Cells[i].Value = personRow.Id_card;
+                }
+            }
+        }
+        */
     }
 }

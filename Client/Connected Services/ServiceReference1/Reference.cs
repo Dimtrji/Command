@@ -15,18 +15,18 @@ namespace Client.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TablePerson", Namespace="http://schemas.datacontract.org/2004/07/Command")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DataTablePersonRow", Namespace="http://schemas.datacontract.org/2004/07/Command")]
     [System.SerializableAttribute()]
-    public partial class TablePerson : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class DataTablePersonRow : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IdField;
+        private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Id_cardField;
+        private int Id_cardField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
@@ -42,12 +42,12 @@ namespace Client.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Id {
+        public int Id {
             get {
                 return this.IdField;
             }
             set {
-                if ((object.ReferenceEquals(this.IdField, value) != true)) {
+                if ((this.IdField.Equals(value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
                 }
@@ -55,12 +55,12 @@ namespace Client.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Id_card {
+        public int Id_card {
             get {
                 return this.Id_cardField;
             }
             set {
-                if ((object.ReferenceEquals(this.Id_cardField, value) != true)) {
+                if ((this.Id_cardField.Equals(value) != true)) {
                     this.Id_cardField = value;
                     this.RaisePropertyChanged("Id_card");
                 }
@@ -94,58 +94,94 @@ namespace Client.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.ICommands")]
     public interface ICommands {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommands/SendRequest", ReplyAction="http://tempuri.org/ICommands/SendRequestResponse")]
-        Client.ServiceReference1.SendRequestResponse SendRequest(Client.ServiceReference1.SendRequestRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommands/GetTable", ReplyAction="http://tempuri.org/ICommands/GetTableResponse")]
+        Client.ServiceReference1.GetTableResponse GetTable(Client.ServiceReference1.GetTableRequest request);
         
         // CODEGEN: Идет формирование контракта на сообщение, так как операция может иметь много возвращаемых значений.
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommands/SendRequest", ReplyAction="http://tempuri.org/ICommands/SendRequestResponse")]
-        System.Threading.Tasks.Task<Client.ServiceReference1.SendRequestResponse> SendRequestAsync(Client.ServiceReference1.SendRequestRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommands/GetTable", ReplyAction="http://tempuri.org/ICommands/GetTableResponse")]
+        System.Threading.Tasks.Task<Client.ServiceReference1.GetTableResponse> GetTableAsync(Client.ServiceReference1.GetTableRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommands/SetTablePerson", ReplyAction="http://tempuri.org/ICommands/SetTablePersonResponse")]
-        void SetTablePerson(Client.ServiceReference1.TablePerson t);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommands/SetTable", ReplyAction="http://tempuri.org/ICommands/SetTableResponse")]
+        Client.ServiceReference1.SetTableResponse SetTable(Client.ServiceReference1.SetTableRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommands/SetTablePerson", ReplyAction="http://tempuri.org/ICommands/SetTablePersonResponse")]
-        System.Threading.Tasks.Task SetTablePersonAsync(Client.ServiceReference1.TablePerson t);
+        // CODEGEN: Идет формирование контракта на сообщение, так как операция может иметь много возвращаемых значений.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommands/SetTable", ReplyAction="http://tempuri.org/ICommands/SetTableResponse")]
+        System.Threading.Tasks.Task<Client.ServiceReference1.SetTableResponse> SetTableAsync(Client.ServiceReference1.SetTableRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommands/GetTablePerson", ReplyAction="http://tempuri.org/ICommands/GetTablePersonResponse")]
-        Client.ServiceReference1.TablePerson GetTablePerson(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommands/GetRandomRow", ReplyAction="http://tempuri.org/ICommands/GetRandomRowResponse")]
+        System.Data.DataTable GetRandomRow();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommands/GetTablePerson", ReplyAction="http://tempuri.org/ICommands/GetTablePersonResponse")]
-        System.Threading.Tasks.Task<Client.ServiceReference1.TablePerson> GetTablePersonAsync(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommands/GetRandomRow", ReplyAction="http://tempuri.org/ICommands/GetRandomRowResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> GetRandomRowAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommands/Delete", ReplyAction="http://tempuri.org/ICommands/DeleteResponse")]
+        void Delete(string dataSet);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommands/Delete", ReplyAction="http://tempuri.org/ICommands/DeleteResponse")]
+        System.Threading.Tasks.Task DeleteAsync(string dataSet);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="SendRequest", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class SendRequestRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetTable", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetTableRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public string queryString;
-        
-        public SendRequestRequest() {
-        }
-        
-        public SendRequestRequest(string queryString) {
-            this.queryString = queryString;
+        public GetTableRequest() {
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="SendRequestResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class SendRequestResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetTableResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetTableResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public System.Data.DataTable SendRequestResult;
+        public System.Data.DataTable GetTableResult;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
         public string message;
         
-        public SendRequestResponse() {
+        public GetTableResponse() {
         }
         
-        public SendRequestResponse(System.Data.DataTable SendRequestResult, string message) {
-            this.SendRequestResult = SendRequestResult;
+        public GetTableResponse(System.Data.DataTable GetTableResult, string message) {
+            this.GetTableResult = GetTableResult;
+            this.message = message;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="SetTable", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class SetTableRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public Client.ServiceReference1.DataTablePersonRow tablePerson;
+        
+        public SetTableRequest() {
+        }
+        
+        public SetTableRequest(Client.ServiceReference1.DataTablePersonRow tablePerson) {
+            this.tablePerson = tablePerson;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="SetTableResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class SetTableResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string SetTableResult;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string message;
+        
+        public SetTableResponse() {
+        }
+        
+        public SetTableResponse(string SetTableResult, string message) {
+            this.SetTableResult = SetTableResult;
             this.message = message;
         }
     }
@@ -178,36 +214,52 @@ namespace Client.ServiceReference1 {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Client.ServiceReference1.SendRequestResponse Client.ServiceReference1.ICommands.SendRequest(Client.ServiceReference1.SendRequestRequest request) {
-            return base.Channel.SendRequest(request);
+        Client.ServiceReference1.GetTableResponse Client.ServiceReference1.ICommands.GetTable(Client.ServiceReference1.GetTableRequest request) {
+            return base.Channel.GetTable(request);
         }
         
-        public System.Data.DataTable SendRequest(string queryString, out string message) {
-            Client.ServiceReference1.SendRequestRequest inValue = new Client.ServiceReference1.SendRequestRequest();
-            inValue.queryString = queryString;
-            Client.ServiceReference1.SendRequestResponse retVal = ((Client.ServiceReference1.ICommands)(this)).SendRequest(inValue);
+        public System.Data.DataTable GetTable(out string message) {
+            Client.ServiceReference1.GetTableRequest inValue = new Client.ServiceReference1.GetTableRequest();
+            Client.ServiceReference1.GetTableResponse retVal = ((Client.ServiceReference1.ICommands)(this)).GetTable(inValue);
             message = retVal.message;
-            return retVal.SendRequestResult;
+            return retVal.GetTableResult;
         }
         
-        public System.Threading.Tasks.Task<Client.ServiceReference1.SendRequestResponse> SendRequestAsync(Client.ServiceReference1.SendRequestRequest request) {
-            return base.Channel.SendRequestAsync(request);
+        public System.Threading.Tasks.Task<Client.ServiceReference1.GetTableResponse> GetTableAsync(Client.ServiceReference1.GetTableRequest request) {
+            return base.Channel.GetTableAsync(request);
         }
         
-        public void SetTablePerson(Client.ServiceReference1.TablePerson t) {
-            base.Channel.SetTablePerson(t);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Client.ServiceReference1.SetTableResponse Client.ServiceReference1.ICommands.SetTable(Client.ServiceReference1.SetTableRequest request) {
+            return base.Channel.SetTable(request);
         }
         
-        public System.Threading.Tasks.Task SetTablePersonAsync(Client.ServiceReference1.TablePerson t) {
-            return base.Channel.SetTablePersonAsync(t);
+        public string SetTable(Client.ServiceReference1.DataTablePersonRow tablePerson, out string message) {
+            Client.ServiceReference1.SetTableRequest inValue = new Client.ServiceReference1.SetTableRequest();
+            inValue.tablePerson = tablePerson;
+            Client.ServiceReference1.SetTableResponse retVal = ((Client.ServiceReference1.ICommands)(this)).SetTable(inValue);
+            message = retVal.message;
+            return retVal.SetTableResult;
         }
         
-        public Client.ServiceReference1.TablePerson GetTablePerson(int id) {
-            return base.Channel.GetTablePerson(id);
+        public System.Threading.Tasks.Task<Client.ServiceReference1.SetTableResponse> SetTableAsync(Client.ServiceReference1.SetTableRequest request) {
+            return base.Channel.SetTableAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Client.ServiceReference1.TablePerson> GetTablePersonAsync(int id) {
-            return base.Channel.GetTablePersonAsync(id);
+        public System.Data.DataTable GetRandomRow() {
+            return base.Channel.GetRandomRow();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> GetRandomRowAsync() {
+            return base.Channel.GetRandomRowAsync();
+        }
+        
+        public void Delete(string dataSet) {
+            base.Channel.Delete(dataSet);
+        }
+        
+        public System.Threading.Tasks.Task DeleteAsync(string dataSet) {
+            return base.Channel.DeleteAsync(dataSet);
         }
     }
 }

@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Command" />
-  <xs:element name="SendRequest">
+  <xs:element name="GetTable">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="queryString" nillable="true" type="xs:string" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="SendRequestResponse">
+  <xs:element name="GetTableResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="SendRequestResult" nillable="true">
+        <xs:element minOccurs="0" name="GetTableResult" nillable="true">
           <xs:complexType>
             <xs:annotation>
               <xs:appinfo>
@@ -28,30 +26,55 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SetTablePerson">
+  <xs:element name="SetTable">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Command" minOccurs="0" name="t" nillable="true" type="q1:TablePerson" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Command" minOccurs="0" name="tablePerson" nillable="true" type="q1:DataTablePersonRow" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SetTablePersonResponse">
+  <xs:element name="SetTableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SetTableResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRandomRow">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetTablePerson">
+  <xs:element name="GetRandomRowResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="GetRandomRowResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetTablePersonResponse">
+  <xs:element name="Delete">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Command" minOccurs="0" name="GetTablePersonResult" nillable="true" type="q2:TablePerson" />
+        <xs:element minOccurs="0" name="dataSet" nillable="true" type="xs:string" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>
