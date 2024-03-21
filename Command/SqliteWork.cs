@@ -12,13 +12,13 @@ namespace Command
     {
         public DataTable SendRequest(string queryString, out string message)
         {
-            const string localPath = "db/testDB.dat";
+            const string localPath = "db\\testDB.sqlite3";
             message = "";
             int requestInfo = 0;
             DataTable dataTable = null;
             try
             {
-                SQLiteConnection connection = new SQLiteConnection(@"Data Source=" + localPath + ";Version=3"); //@"Data Source=C:\\ProgramData\\MDO\\ParsecNET 3\\parsec3.events.dat;Version=3;");
+                SQLiteConnection connection = new SQLiteConnection(@"Data Source=" + localPath + ";Version=3;");
                 connection.Open();
 
                 var ds = new DataSet();
@@ -34,11 +34,10 @@ namespace Command
                         {
                             message += "Record: " + ds.Tables[0].Rows.Count + Environment.NewLine;
                             dataTable = ds.Tables[0];
-
                         }
                         else
                         {
-                            message = "Complete";
+                            message += "Complete ";
                         }
                     }
                     else

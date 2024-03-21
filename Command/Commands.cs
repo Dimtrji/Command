@@ -27,10 +27,10 @@ namespace Command
         {
             //upsert update and insert sqlite
             SqliteWork selectSql = new SqliteWork();
-            /*string query = "INSERT INTO person (id, name, id_card) VALUES(" + tableTransfer.Id + ", '" + tableTransfer.Name + "', " + tableTransfer.Id_card
+            string query = "INSERT INTO person (id, name, id_card) VALUES(" + tableTransfer.Id + ", '" + tableTransfer.Name + "', " + tableTransfer.Id_card
                 + " ) ON CONFLICT (id) DO UPDATE SET name = '" +
-                tableTransfer.Name + "', id_card=" + tableTransfer.Id_card + " WHERE id=" + tableTransfer.Id;  */
-            string query = "insert into person (id, name, id_card) VALUES(" + tableTransfer.Id + ", '" + tableTransfer.Name + "', " + tableTransfer.Id_card + " )";
+                tableTransfer.Name + "', id_card=" + tableTransfer.Id_card + " WHERE id=" + tableTransfer.Id; 
+            //string query = "insert into person( id, name, id_card ) VALUES( " + tableTransfer.Id.ToString() + ", " + tableTransfer.Name.ToString() + ", " + tableTransfer.Id_card.ToString() + " )";
             message = "";
 
 

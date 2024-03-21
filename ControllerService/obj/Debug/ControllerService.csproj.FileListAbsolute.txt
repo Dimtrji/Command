@@ -1,0 +1,7 @@
+D:\Users\metru\Source\Repos\Command\ControllerService\bin\Debug\ControllerService.dll.config
+D:\Users\metru\Source\Repos\Command\ControllerService\bin\Debug\ControllerService.dll
+D:\Users\metru\Source\Repos\Command\ControllerService\bin\Debug\ControllerService.pdb
+D:\Users\metru\Source\Repos\Command\ControllerService\obj\Debug\ControllerService.csproj.AssemblyReference.cache
+D:\Users\metru\Source\Repos\Command\ControllerService\obj\Debug\ControllerService.csproj.CoreCompileInputs.cache
+D:\Users\metru\Source\Repos\Command\ControllerService\obj\Debug\ControllerService.dll
+D:\Users\metru\Source\Repos\Command\ControllerService\obj\Debug\ControllerService.pdb

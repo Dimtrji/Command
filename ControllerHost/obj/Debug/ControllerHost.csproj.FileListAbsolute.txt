@@ -1,0 +1,12 @@
+D:\Users\metru\Source\Repos\Command\ControllerHost\bin\Debug\ControllerHost.exe.config
+D:\Users\metru\Source\Repos\Command\ControllerHost\bin\Debug\ControllerHost.exe
+D:\Users\metru\Source\Repos\Command\ControllerHost\bin\Debug\ControllerHost.pdb
+D:\Users\metru\Source\Repos\Command\ControllerHost\bin\Debug\ControllerService.dll
+D:\Users\metru\Source\Repos\Command\ControllerHost\bin\Debug\ControllerService.pdb
+D:\Users\metru\Source\Repos\Command\ControllerHost\bin\Debug\ControllerService.dll.config
+D:\Users\metru\Source\Repos\Command\ControllerHost\obj\Debug\ControllerHost.csproj.AssemblyReference.cache
+D:\Users\metru\Source\Repos\Command\ControllerHost\obj\Debug\ControllerHost.csproj.SuggestedBindingRedirects.cache
+D:\Users\metru\Source\Repos\Command\ControllerHost\obj\Debug\ControllerHost.csproj.CoreCompileInputs.cache
+D:\Users\metru\Source\Repos\Command\ControllerHost\obj\Debug\ControllerHost.csproj.CopyComplete
+D:\Users\metru\Source\Repos\Command\ControllerHost\obj\Debug\ControllerHost.exe
+D:\Users\metru\Source\Repos\Command\ControllerHost\obj\Debug\ControllerHost.pdb
